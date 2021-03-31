@@ -59,8 +59,7 @@ mkdir ./pacman-utils_"$PACMAN_VERSION"_amd64/DEBIAN
 tar -I zstd -xvf ./$PACMAN_FILE_NAME -C ./pacman-utils_"$PACMAN_VERSION"_amd64
 } > /dev/null
 
-#removes pacman binary to prevent users trying to install packages. This could break some of the other C-based scripts. As far as I know, Pacman itself is not neccessary for development purposes
-rm ./pacman-utils_"$PACMAN_VERSION"_amd64/usr/bin/pacman
+
 rm ./pacman-utils_"$PACMAN_VERSION"_amd64/.PKGINFO
 rm ./pacman-utils_"$PACMAN_VERSION"_amd64/.MTREE
 rm ./pacman-utils_"$PACMAN_VERSION"_amd64/.BUILDINFO
