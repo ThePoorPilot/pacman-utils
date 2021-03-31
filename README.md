@@ -8,6 +8,7 @@ I have not tested all functionaly of this package yet, it may still need tuning.
 Functionality tested:
 
 repo-add works
+
 makepkg does not work
 
 ## Building
