@@ -9,7 +9,7 @@ Functionality tested:
 
 repo-add works
 
-makepkg works, but only with "-d" flag to skip dependency checks.
+makepkg works, but requires "-d" flag to skip dependency checks.
 
 ## Building
 
