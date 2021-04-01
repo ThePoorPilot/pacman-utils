@@ -1,17 +1,17 @@
 # pacman-utils
 Debian package that installs Arch Linux Pacman tools(repo-add, makepkg, etc.). This is primarily designed for integration environments. Most hosted integration environments don't have an Arch Linux image, but do have a Debian package.
 
+![Screenshot](https://github.com/ThePoorPilot/pacman-utils/raw/main/Screenshot.png)
+
 With this package installed, for example, add pkg.tar.zst files to a .db file, and upload it to a custom repository(hinting at a future project of mine).
 
 I have not tested all functionaly of this package yet, it may still need tuning.
 
 Functionality tested:
 
-repo-add works
+Working: repo-add, makepkg(requires -d flag), pacman-key 
 
-makepkg works, but requires "-d" flag to skip dependency checks.
-
-pacman -S works, but I've only been able to install cmatrix. Most apps don't install correctly, but that's not the point.
+Sort of works: pacman -Sdd to install packages.
 
 ## Building
 
