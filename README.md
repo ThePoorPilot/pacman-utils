@@ -9,9 +9,9 @@ I have not tested all functionaly of this package yet, it may still need tuning.
 
 Functionality tested:
 
-Working: repo-add, makepkg(requires -d flag), pacman-key 
+Working: repo-add, repo-remove, repo-elephant, makepkg(requires -d flag), testpkg, makpkg-template, pacman-key, pacman-conf, pacman-db-upgrade 
 
-Sort of works: pacman -Sdd to install packages.
+Sort of works: pacman -Sdd to install packages. Not important functionality if focused on integration.
 
 ## Building
 
