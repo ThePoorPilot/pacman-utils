@@ -1,24 +1,20 @@
 #!/bin/bash
 
 #Dependencies: sudo apt-get install gcc-10 bash glibc-source libarchive-tools libarchive13 libarchive-dev curl asciidoc fakechroot python3 libgpgme11 libgpgme-dev openssl libssl1.1 libssl-dev libcurl4 libcurl4-openssl-dev ksh
+
+#cleanup in main directory
 rm -rf ./building
 rm ./*.deb
 
+#make building directory so that main directory doesn't get all messy
 mkdir ./building
 cd ./building
 
-#cleanup if necessary
-rm -rf ./pacman-*
-rm -rf ./keyfiles
-rm -rf ./archlinux-keyring-*
-rm -r ./*.tar.gz
-rm ./*.patch
-rm ./*.conf
-rm ./mirrorlist
-rm -r ./*_arch
-rm ./*.db
-
-ARCH_REPO_STATUS="$(curl -s -I https://mirrors.rit.edu/archlinux/ | grep -c '200')" 
+#make sure all needed online services are up
+ARCH_REPO_STATUS="$(curl -s -I https://mirrors.rit.edu/archlinux/ | grep -c '200')"
+GITHUB_STATUS="$(curl -s -I https://github.com | head -1 | grep -c '200')"
+ARCH_SOURCES_STATUS="$(curl -s -I https://sources.archlinux.org/other/ | grep -c '200')"
+ 
 if [ "$ARCH_REPO_STATUS" == "1" ]
 then
     echo "Arch Linux RIT mirror is up!"
@@ -29,6 +25,23 @@ else
     ARCH_REPO="$(awk '/## United States/{getline; print}' ./mirrorlist | head -1 | sed -n -e 's/#Server = //p' | sed -n -e's:$repo/os/$arch::p')"
 fi
 
+if [ "$ARCH_SOURCES_STATUS" == "1" ]
+then
+    echo "Arch pkg Sources are up!"
+else
+    echo "Arch pkg sources are down! quitting..."
+    exit
+fi
+
+if [ "$GITHUB_STATUS" == "1" ]
+then
+    echo "Github is up!"
+else
+    echo "Github is down! quitting..."
+    exit
+fi
+
+#actually start building
 echo "Downloading core.db"
 wget -q "$ARCH_REPO""/core/os/x86_64/core.db"
 echo "Extracting core.db"
@@ -36,6 +49,7 @@ mkdir ./core_arch
 {
 tar -zxf ./core.db -C ./core_arch
 } > /dev/null
+
 
 PACMAN_FILE_NAME="$(ksh -c "awk '/%FILENAME%/{getline; print}' ./core_arch/pacman-+([0-9])*-+([0-9])*/desc")"
 PACMAN_VERSION="$(echo $PACMAN_FILE_NAME | sed -n -e 's/-x86_64.pkg.tar.zst//p' | sed -n -e 's/pacman-//p')"
@@ -123,7 +137,7 @@ echo "Creating control file"
 cat << EOF > ./$builtfiles/DEBIAN/control
 Package: pacman-utils
 Version: $PACMAN_VERSION
-License: GNU v2+
+License: GNU
 Architecture: amd64
 Maintainer: Michael Monaco <thepoorpilot@gmail.com>
 Installed-Size: $INSTALLED_SIZE
