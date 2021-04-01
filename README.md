@@ -5,8 +5,6 @@ Debian package that installs Arch Linux Pacman tools(repo-add, makepkg, etc.). T
 
 With this package installed, for example, add pkg.tar.zst files to a .db file, and upload it to a custom repository(hinting at a future project of mine).
 
-I have not tested all functionaly of this package yet, it may still need tuning.
-
 Functionality tested:
 
 Working: repo-add, repo-remove, repo-elephant, makepkg(requires -d flag), testpkg, makpkg-template, pacman-key, pacman-conf, pacman-db-upgrade 
