@@ -1,6 +1,11 @@
 #!/bin/bash
 
-#Dependencies: sudo apt install gcc-10 bash glibc-source libarchive-tools libarchive13 libarchive-dev curl asciidoc fakechroot python3 libgpgme11 libgpgme-dev openssl libssl1.1 libssl-dev libcurl4 libcurl4-openssl-dev ksh
+#Dependencies: sudo apt-get install gcc-10 bash glibc-source libarchive-tools libarchive13 libarchive-dev curl asciidoc fakechroot python3 libgpgme11 libgpgme-dev openssl libssl1.1 libssl-dev libcurl4 libcurl4-openssl-dev ksh
+rm -rf ./building
+rm ./*.deb
+
+mkdir ./building
+cd ./building
 
 #cleanup if necessary
 rm -rf ./pacman-*
@@ -12,7 +17,6 @@ rm ./*.conf
 rm ./mirrorlist
 rm -r ./*_arch
 rm ./*.db
-rm ./*.deb
 
 ARCH_REPO_STATUS="$(curl -s -I https://mirrors.rit.edu/archlinux/ | grep -c '200')" 
 if [ "$ARCH_REPO_STATUS" == "1" ]
@@ -47,8 +51,6 @@ pkgdir="$curdir/$builtfiles"
 #download files
 wget https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.gz
 
-#need to add way to determine which patches are needed from PKGBUILD
-wget -O ./pacman-5.2.2-fix-strip-messing-up-file-attributes.patch https://git.archlinux.org/pacman.git/patch/?id=88d054093c1c99a697d95b26bd9aad5bc4d8e170
 wget -O mirrorlist https://github.com/archlinux/svntogit-packages/raw/packages/pacman-mirrorlist/repos/core-any/mirrorlist
 wget -O makepkg.conf https://github.com/archlinux/svntogit-packages/raw/packages/pacman/repos/core-x86_64/makepkg.conf
 wget -O pacman.conf https://github.com/archlinux/svntogit-packages/raw/packages/pacman/repos/core-x86_64/pacman.conf
@@ -58,8 +60,14 @@ mkdir ./$pkgname-$pkgver/build
 
 #prepare
 cd "$pkgname-$pkgver"
-#need to turn this into a loop that goes through list of determined patches
-patch -Np1 < ../pacman-5.2.2-fix-strip-messing-up-file-attributes.patch
+#this should be good enough for now. Patches seems relatively rare/insignificant in pacman. Future patches require human intervention
+if [ "$pkgver" == "5.2.2" ]
+then
+    wget -O ./pacman-5.2.2-fix-strip-messing-up-file-attributes.patch https://git.archlinux.org/pacman.git/patch/?id=88d054093c1c99a697d95b26bd9aad5bc4d8e170
+    patch -Np1 < ./pacman-5.2.2-fix-strip-messing-up-file-attributes.patch
+else
+    :
+fi
 
 #build
 ./configure --prefix=/usr --sysconfdir=/etc \
@@ -127,3 +135,4 @@ EOF
 
 echo "Building package..."
 dpkg --build ./$builtfiles/
+mv ./$builtfiles.deb ../
