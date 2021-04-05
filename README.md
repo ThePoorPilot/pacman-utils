@@ -22,7 +22,7 @@ An example of this step in a script
 
 <code> wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2/pacman-utils_5.2.2-2_amd64.deb</code>
 
-<code>sudo apt install ./pacman-utils_5.2.2-2_amd64.deb</code>
+<code>sudo apt-get install ./pacman-utils_5.2.2-2_amd64.deb</code>
 
 ### Building
 
