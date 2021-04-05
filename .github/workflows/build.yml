@@ -19,8 +19,9 @@ jobs:
 
    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Stable-Build
+      - name: Build
         run: |
+          sudo apt-get update
           git clone https://github.com/ThePoorPilot/pacman-utils.git
           cp ./pacman-utils/auto/token.txt ./
           cp ./pacman-utils/auto/push.sh ./
