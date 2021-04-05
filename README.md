@@ -11,7 +11,7 @@ Working: repo-add, repo-remove, repo-elephant, makepkg(requires -d flag), testpk
 
 Sort of works: pacman -Sdd to install packages. Not important functionality if focused on integration.
 
-## Installing
+### Installing
 Download your prefered .deb package here: https://github.com/ThePoorPilot/pacman-utils/releases
 
 Note: this repo automatically rebuilds pacman-utils when a new version of pacman or glibc is released. In scripting, it would be best to manually test each new release for compatibility and then change the download link.
@@ -24,7 +24,7 @@ An example of this step in a script
 
 <code>sudo apt install ./pacman-utils_5.2.2-2_amd64.deb</code>
 
-## Building
+### Building
 
 <code> git clone https://github.com/ThePoorPilot/pacman-utils.git </code>
 
