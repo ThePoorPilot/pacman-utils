@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+
+name: pacman-check
+
+# Controls when the action will run. 
+on:
+  schedule:
+    - cron: '*/60 */6 * * *'
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+   # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Stable-Build
+        run: |
+          git clone https://github.com/ThePoorPilot/pacman-utils.git
+          cp ./pacman-utils/auto/token.txt ./
+          cp ./pacman-utils/auto/push.sh ./
+          sed -i 's/insert_token_here/'"${{ secrets.SECRET_TOKEN }}"'/g' ./token.txt
+          sed -i 's/insert_password_here/'"${{ secrets.PASSWORD }}"'/g' ./push.sh
+          cd ./pacman-utils/auto
+          ./auto.sh
+          cd ../
+          cd ../
+          rm ./push.sh
+          rm ./token.txt
