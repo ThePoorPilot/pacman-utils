@@ -60,7 +60,7 @@ then
     then    
         cd ../
         gh auth login --with-token < ../token.txt
-        gh release create -R github.com/ThePoorPilot/pacman-utils $PACMAN_VERSION"_"$glibc_version -d ./*.deb -F ./release_notes.md  -t "$PACMAN_VERSION for glibc $glibc_version"
+        gh release create -R github.com/ThePoorPilot/pacman-utils $PACMAN_VERSION"_"$glibc_version ./*.deb -F ./release_notes.md  -t "$PACMAN_VERSION for glibc $glibc_version"
         #prep for pushing updated auto.sh to repo        
         rm -rf ./building
         rm ./*.deb
