@@ -1,17 +1,13 @@
 #!/bin/bash
 
+#only executed if a neew .deb package is built and found in auto.sh
+#operates from home directory
+
 PASSWORD="insert_password_here"
 
-if test -f ./*.deb
-then
-    echo "Pushing revised auto.sh to GitHub..."
-    rm ./*.deb
-    git config --global user.name "ThePoorPilot"
-    git config --global user.email "ios8jailbreakpangu@gmail.com"
-    git add .
-    git commit -m 'changed version number in build checking'
-    git push https://ThePoorPilot:"$PASSWORD"@github.com/ThePoorPilot/pacman-utils.git 
-else
-    echo "There isn't a new version, no need to push!"
-    exit
-fi
+echo "Pushing revised auto.sh to GitHub..."
+git config --global user.name "ThePoorPilot"
+git config --global user.email "ios8jailbreakpangu@gmail.com"
+git add .
+git commit -m 'changed version number in build checking'
+git push https://ThePoorPilot:"$PASSWORD"@github.com/ThePoorPilot/pacman-utils.git 
