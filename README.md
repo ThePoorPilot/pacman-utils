@@ -1,5 +1,5 @@
 # pacman-utils
-Debian package that installs Arch Linux Pacman tools(repo-add, makepkg, etc.). This is primarily designed for integration environments. Most hosted integration environments(such as github actions) don't have an Arch Linux image, but do have a Debian package.
+Debian package that installs Arch Linux Pacman tools(repo-add, makepkg, etc.). This is primarily designed for integration environments. Most hosted integration environments(such as github actions) don't have an Arch Linux image, but do have a Ubuntu/Debian runner.
 
 ![](https://github.com/ThePoorPilot/pacman-utils/raw/main/Screenshot.png)
 
