@@ -18,11 +18,12 @@ Note: this repo automatically rebuilds pacman-utils when a new version of pacman
 
 Install using apt or dpkg.
 
-An example of this step in a script
+An example of this step in a script:
 
-<code> wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2_2.31-0/pacman-utils_5.2.2-2_amd64.deb </code>
-
-<code>sudo apt-get install ./pacman-utils_5.2.2-2_amd64.deb</code>
+```
+wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2_2.31-0/pacman-utils_5.2.2-2_amd64.deb
+sudo apt-get install ./pacman-utils_5.2.2-2_amd64.deb
+```
 
 ### Building
 
