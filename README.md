@@ -3,7 +3,7 @@ Debian package that installs Arch Linux Pacman tools(repo-add, makepkg, etc.). T
 
 ![](https://github.com/ThePoorPilot/pacman-utils/raw/main/Screenshot.png)
 
-With this package installed, for example, add pkg.tar.zst files to a .db file, and upload it to a custom repository(hinting at a future project of mine).
+With this package installed, for example, you can add pkg.tar.zst files to a .db file, and upload it to a custom repository(hinting at a future project of mine).
 
 Functionality tested:
 
@@ -20,7 +20,7 @@ Install using apt or dpkg.
 
 An example of this step in a script
 
-<code> wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2/pacman-utils_5.2.2-2_amd64.deb</code>
+<code> wget https://github.com/ThePoorPilot/pacman-utils/releases/download/5.2.2-2_2.31-0/pacman-utils_5.2.2-2_amd64.deb </code>
 
 <code>sudo apt-get install ./pacman-utils_5.2.2-2_amd64.deb</code>
 
@@ -28,12 +28,8 @@ An example of this step in a script
 
 <code> git clone https://github.com/ThePoorPilot/pacman-utils.git </code>
 
-You can choose to run either build.sh or build_exp.sh. build.sh builds the latest package from the arch repos. This is fine if the tools you need to use are only shell based.
-
-build_exp.sh is currently "experimental" and in need of improvements. Compiling from source seems like the best option for compatibility, but the current version of the script needs to be more versatile.
-
 Once you choose which script you want use, here is how you run them:
 
-<code> sudo chmod +x ./build </code>
+<code> sudo chmod +x ./build.sh </code>
 
-<code> ./build </code>
+<code> ./build.sh </code>
