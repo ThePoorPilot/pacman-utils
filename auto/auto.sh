@@ -40,12 +40,12 @@ else
     cd ./auto 
 fi
 
-if [ "$PACMAN_VERSION" == "5.2.2-2" ]
+if [ "$PACMAN_VERSION" == "5.2.2-3" ]
 then
     echo "No new version of pacman, no need to rebuild"
 else
     echo "New version of pacman! Re-building pacman"
-    sed -i 's/5.2.2-2/'"$PACMAN_VERSION"'/g' ./auto.sh
+    sed -i 's/5.2.2-3/'"$PACMAN_VERSION"'/g' ./auto.sh
     sudo apt-get install gcc-10 bash glibc-source libarchive-tools libarchive13 libarchive-dev curl asciidoc fakechroot python3 libgpgme11 libgpgme-dev openssl libssl1.1 libssl-dev libcurl4 libcurl4-openssl-dev ksh
     cd ../
     ./build.sh
