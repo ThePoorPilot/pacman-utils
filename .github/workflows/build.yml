@@ -37,6 +37,7 @@ jobs:
         if: ${{ env.FILES_EXIST > '0' }}
         run: |
           cd ./pacman-utils
+          rm ./*.deb
           echo "Pushing revised auto.sh to GitHub..."
           git config --global user.name "ThePoorPilot"
           git config --global user.email "ios8jailbreakpangu@gmail.com"
