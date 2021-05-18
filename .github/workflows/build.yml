@@ -28,8 +28,8 @@ jobs:
           sed -i 's/insert_token_here/'"${{ secrets.SECRET_TOKEN }}"'/g' ./token.txt
           cd ./pacman-utils/auto
           ./auto.sh
-          echo "FILES_EXIST=$(ls -1 *.deb 2>/dev/null | wc -l)" >> $GITHUB_ENV
           cd ../
+          echo "FILES_EXIST=$(ls -1 *.deb 2>/dev/null | wc -l)" >> $GITHUB_ENV
           cd ../
           rm ./push.sh
           rm ./token.txt
