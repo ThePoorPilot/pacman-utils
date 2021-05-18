@@ -65,7 +65,6 @@ then
         rm -rf ./building
         rm ./*.deb
         rm ./release_notes.md
-        ../push.sh
     else
         echo "Built package is under 500 kb, canceling build"
     fi
