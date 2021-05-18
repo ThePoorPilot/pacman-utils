@@ -63,7 +63,6 @@ then
         gh release create -R github.com/ThePoorPilot/pacman-utils $PACMAN_VERSION"_"$glibc_version ./*.deb -F ./release_notes.md  -t "$PACMAN_VERSION for glibc $glibc_version"
         #prep for pushing updated auto.sh to repo        
         rm -rf ./building
-        rm ./*.deb
         rm ./release_notes.md
     else
         echo "Built package is under 500 kb, canceling build"
