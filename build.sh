@@ -79,6 +79,8 @@ if [ "$pkgver" == "5.2.2" ]
 then
     wget -O ./pacman-5.2.2-fix-strip-messing-up-file-attributes.patch https://git.archlinux.org/pacman.git/patch/?id=88d054093c1c99a697d95b26bd9aad5bc4d8e170
     patch -Np1 < ./pacman-5.2.2-fix-strip-messing-up-file-attributes.patch
+    wget -O ./pacman-5.2.2-fix-debug-packages-with-gcc11.patch https://git.archlinux.org/pacman.git/patch/?id=bdf6aa3fb757a2363a4e708174b7d23a4997763d
+    patch -Np1 < ./pacman-5.2.2-fix-debug-packages-with-gcc11.patch
 else
     :
 fi
