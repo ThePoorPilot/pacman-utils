@@ -63,13 +63,13 @@ curdir="$(pwd)"
 pkgdir="$curdir/$builtfiles"
 
 #download files
-wget https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.gz
+wget https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.xz
 
 wget -O mirrorlist https://github.com/archlinux/svntogit-packages/raw/packages/pacman-mirrorlist/repos/core-any/mirrorlist
 wget -O makepkg.conf https://github.com/archlinux/svntogit-packages/raw/packages/pacman/repos/core-x86_64/makepkg.conf
 wget -O pacman.conf https://github.com/archlinux/svntogit-packages/raw/packages/pacman/repos/core-x86_64/pacman.conf
 
-tar -xf ./$pkgname-$pkgver.tar.gz
+tar -xf ./$pkgname-$pkgver.tar.xz
 mkdir ./$pkgname-$pkgver/build
 
 #prepare
