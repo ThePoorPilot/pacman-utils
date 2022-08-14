@@ -4,8 +4,8 @@ name: pacman-check
 
 # Controls when the action will run. 
 on:
-  schedule:
-    - cron: '*/60 */6 * * *'
+#  schedule:
+#    - cron: '*/60 */6 * * *'
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
